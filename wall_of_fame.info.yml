@@ -1,0 +1,9 @@
+name: 'Wall of Fame'
+type: module
+description: 'The best way to showcase the real winners at home'
+core_version_requirement: ^10 || ^11
+package: Custom
+dependencies:
+  - paragraphs:paragraphs
+
+required: false

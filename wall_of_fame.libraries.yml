@@ -1,0 +1,11 @@
+global-css:
+  version: Version
+  css:
+    theme:
+      css/wall_of_fame.min.css: { minified: true }
+  js:
+    js/wall_of_fame.min.js: { minified: true }
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/once

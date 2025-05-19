@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * Wall of Fame module implementation.
+ */
+
+/**
+ * Implements hook_theme().
+ *
+ * Declare Twig template provided by this module.
+ */
+function wall_of_fame_theme($existing, $type, $theme, $path) {
+  return [
+    'paragraph__wall_of_fame' => [
+      'render element' => 'elements',
+      'base hook' => 'paragraph',
+      'template' => 'paragraph--wall-of-fame',
+      'path' => \Drupal::service('extension.list.module')->getPath('wall_of_fame') . '/templates',
+    ],
+    'paragraph__podium' => [  // Replace "wall_of_fame_wrapper" with your actual wrapper paragraph machine name
+      'render element' => 'elements',
+      'base hook' => 'paragraph',
+      'template' => 'paragraph--podium',
+      'path' => \Drupal::service('extension.list.module')->getPath('wall_of_fame') . '/templates',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ *
+ * Attach libraries and add classes for wall_of_fame paragraphs.
+ */
+function wall_of_fame_preprocess_paragraph(&$variables) {
+  // Only apply to wall_of_fame paragraph type
+  if ($variables['paragraph']->bundle() == 'wall_of_fame') {
+    // Attach the CSS/JS library defined in wall_of_fame.libraries.yml
+    $variables['#attached']['library'][] = 'wall_of_fame/global-css';
+    
+    // Add a wrapper class for custom styling
+    $variables['attributes']['class'][] = 'podium';
+  }
+}

@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap");
+h1, h2, h3 {
+  font-family: Roboto Slab, serif;
+  font-weight: 400;
+}
+
+p {
+  font-family: Roboto, sans-serif;
+  font-weight: 200;
+}
+
+.winners-container {
+  background-color: #F9F8F5;
+  padding: 3rem;
+}
+
+.icon-trophy {
+  background-image: url("../images/trophy.svg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 1em;
+  padding-left: 1.5em;
+  display: inline-block;
+  line-height: 1;
+}
+
+.icon-medal {
+  background-image: url("../images/medal.svg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 1em;
+  padding-left: 1.5em;
+  display: inline-block;
+  line-height: 1;
+}
+
+.icon-calendar {
+  background-image: url("../images/calendar.svg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 1em;
+  padding-left: 1.5em;
+  display: inline-block;
+  line-height: 1;
+}
+
+.winner .wall-of-fame-title, .winner .wall-of-fame-subtitle, .winner .position-indicator {
+  font-family: Roboto Slab, serif;
+  color: #3A3533;
+  font-weight: 400;
+}
+.winner .wall-of-fame-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+.winner .wall-of-fame-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.winner .wall-of-fame-description {
+  color: #3A3533;
+  font-family: Roboto, sans-serif;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+.winner .wall-of-fame-date {
+  color: #3A3533;
+  font-size: 0.9rem;
+}
+.winner .position-indicator {
+  margin-bottom: 1rem;
+}
+.winner .position-indicator .position-label {
+  font-weight: 500;
+  color: #E81C24;
+}
+
+.border-top {
+  width: 100%;
+  height: 9px;
+  background-color: #E81C24;
+}
+
+.winners-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #F9F8F5;
+}
+
+.featured-paragraph-row {
+  margin-bottom: 3rem;
+}
+.featured-paragraph-row .winner {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 2rem;
+  overflow: hidden;
+  justify-content: space-between;
+}
+.featured-paragraph-row .winner .wall-of-fame-image-container {
+  flex: 0 0 55%;
+}
+.featured-paragraph-row .winner .wall-of-fame-image-container img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.featured-paragraph-row .winner .wall-of-fame-content {
+  flex: 0 0 35%;
+  padding: 2rem 0;
+}
+
+.standard-paragraphs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+.standard-paragraphs-grid .winner .wall-of-fame-image-container {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+.standard-paragraphs-grid .winner .wall-of-fame-image-container img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.standard-paragraphs-grid .winner .wall-of-fame-content {
+  padding: 1.5rem;
+  position: relative;
+  margin-top: -85px;
+  z-index: 7;
+  background: white;
+  width: 70%;
+  margin-left: auto; /* Pushes it to the right */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 992px) {
+  .featured-paragraph-row .winner {
+    flex-direction: column;
+  }
+  .featured-paragraph-row .winner .wall-of-fame-image-container,
+  .featured-paragraph-row .winner .wall-of-fame-content {
+    flex: 0 0 100%;
+  }
+  .standard-paragraphs-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

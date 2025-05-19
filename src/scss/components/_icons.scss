@@ -1,0 +1,13 @@
+@use '../abstracts/mixins' as *;
+
+.icon-trophy {
+  @include icon-left('../images/trophy.svg');
+}
+
+.icon-medal {
+  @include icon-left('../images/medal.svg');
+}
+
+.icon-calendar {
+  @include icon-left('../images/calendar.svg');
+}

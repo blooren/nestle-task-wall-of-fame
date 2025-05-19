@@ -1,0 +1,14 @@
+@use '../abstracts/variables' as *;
+
+h1, h2, h3 {
+  font-family: $winner-heading-font;
+  font-weight: 400;
+}
+p {
+  font-family: $winner-paragraph-font;
+  font-weight: 200;
+}
+.winners-container{
+    background-color: $winner-bg-color;
+    padding: 3rem;
+}

@@ -1,0 +1,18 @@
+@use 'variables' as *;
+@mixin hover-lift {
+  transition: $winner-transition;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+@mixin icon-left($svg) {
+  background-image: url($svg);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 1em;
+  padding-left: 1.5em;
+  display: inline-block;
+  line-height: 1;
+}

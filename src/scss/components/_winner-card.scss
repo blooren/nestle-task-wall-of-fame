@@ -1,0 +1,40 @@
+@use '../abstracts/variables' as *;
+
+.winner {
+.wall-of-fame-title, .wall-of-fame-subtitle, .position-indicator{
+    font-family: $winner-heading-font;
+    color: $winner-text-color;
+    font-weight: 400;
+}
+
+  .wall-of-fame-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .wall-of-fame-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .wall-of-fame-description {
+    color: $winner-text-color;
+    font-family: $winner-paragraph-font;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .wall-of-fame-date {
+    color: $winner-text-color;
+    font-size: 0.9rem;
+  }
+
+  .position-indicator {
+    margin-bottom: 1rem;
+
+    .position-label {
+      font-weight: 500;
+      color: $purina-red;
+    }
+  }
+}

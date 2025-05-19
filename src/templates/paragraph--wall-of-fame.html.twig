@@ -1,0 +1,70 @@
+{#
+/**
+ * @file
+ * Template for Wall of Fame wall-of-fame paragraph.
+ */
+#}
+
+{%
+  set classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    'wall-of-fame',
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  ]
+%}
+
+{# Add position and type classes #}
+{% if attributes.hasClass('first') %}
+  {% set classes = classes|merge(['winner', 'first-place', 'paragraph-featured']) %}
+{% elseif attributes.hasClass('second') %}
+  {% set classes = classes|merge(['winner', 'second-place', 'paragraph-standard']) %}
+{% elseif attributes.hasClass('third') %}
+  {% set classes = classes|merge(['winner', 'third-place', 'paragraph-standard']) %}
+{% else %}
+  {% set classes = classes|merge(['winner']) %}
+{% endif %}
+
+<div{{ attributes.addClass(classes) }}>
+    {# Image section #}
+
+    <div class="wall-of-fame-image-container">
+   
+      {% if not attributes.hasClass('first') %}
+        <div class="border-top"></div>
+      {% endif %}
+      {% if content.field_image|render|trim %}
+        {{ content.field_image }}
+      {% endif %}
+    </div>
+    
+    {# Content section #}
+    <div class="wall-of-fame-content">
+      {# Position indicator for top 3 #}
+      {% if attributes.hasClass('first') or attributes.hasClass('second') or attributes.hasClass('third') %}
+        <div class="position-indicator">
+          {% if attributes.hasClass('first') %}
+            <span class="position-label icon-trophy">The winner</span>
+          {% elseif attributes.hasClass('second') %}
+            <span class="position-label">Second place</span>
+          {% elseif attributes.hasClass('third') %}
+            <span class="position-label">Third place</span>
+          {% endif %}
+        </div>
+      {% endif %}
+      {# Title #}
+      {% if paragraph.field_title.value|render|trim %}
+        <h3 class="wall-of-fame-title">{{ paragraph.field_title.value }}</h3>
+      {% endif %}
+      {# Subtitle #}
+      {% if paragraph.field_subtitle.value|render|trim %}
+        <h4 class="wall-of-fame-subtitle">{{ paragraph.field_subtitle.value }}</h4>
+      {% endif %}
+      {# Description #}
+      <p class="wall-of-fame-description"> {{ paragraph.field_description.value|raw|striptags }}</p>
+      {# Date added #}
+      {% if content.field_date_of_adding|render|trim %}
+        <div class="wall-of-fame-date">Added: {{ content.field_date_of_adding }}</div>
+      {% endif %}
+    </div>
+</div>

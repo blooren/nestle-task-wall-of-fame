@@ -1,0 +1,182 @@
+<?php
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Wall of Fame module.
+ */
+
+use Drupal\field\Entity\FieldConfig;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\paragraphs\Entity\ParagraphsType;
+
+/**
+ * Implements hook_install().
+ */
+function wall_of_fame_install() {
+  // Create paragraph types
+  _wall_of_fame_create_paragraph_types();
+  
+  // Create fields
+  _wall_of_fame_create_fields();
+}
+
+/**
+ * Creates required paragraph types.
+ */
+function _wall_of_fame_create_paragraph_types() {
+  // Podium paragraph type
+  $podium_type = ParagraphsType::create([
+    'id' => 'podium',
+    'label' => 'Podium',
+    'description' => 'Container for Wall of Fame winners.',
+  ]);
+  $podium_type->save();
+
+  // Wall of Fame paragraph type
+  $wall_of_fame_type = ParagraphsType::create([
+    'id' => 'wall_of_fame',
+    'label' => 'Wall of Fame Entry',
+    'description' => 'Individual Wall of Fame entry with image and details.',
+  ]);
+  $wall_of_fame_type->save();
+}
+
+/**
+ * Creates all required fields.
+ */
+function _wall_of_fame_create_fields() {
+  // Field storage definitions
+  $field_storage_configs = [
+    'field_title' => [
+      'type' => 'string',
+      'entity_type' => 'paragraph',
+    ],
+    'field_subtitle' => [
+      'type' => 'string',
+      'entity_type' => 'paragraph',
+    ],
+    'field_description' => [
+      'type' => 'text_long',
+      'entity_type' => 'paragraph',
+    ],
+    'field_image' => [
+      'type' => 'image',
+      'entity_type' => 'paragraph',
+    ],
+    'field_date_of_adding' => [
+      'type' => 'datetime',
+      'entity_type' => 'paragraph',
+    ],
+    'field_winner' => [
+      'type' => 'entity_reference_revisions',
+      'entity_type' => 'paragraph',
+      'settings' => [
+        'target_type' => 'paragraph',
+      ],
+    ],
+  ];
+
+  // Create field storages
+  foreach ($field_storage_configs as $field_name => $storage_config) {
+    if (!FieldStorageConfig::loadByName($storage_config['entity_type'], $field_name)) {
+      FieldStorageConfig::create($storage_config + [
+        'field_name' => $field_name,
+        'cardinality' => ($field_name === 'field_winner') ? -1 : 1,
+      ])->save();
+    }
+  }
+
+  // Field configurations for Wall of Fame paragraph type
+  $wall_of_fame_fields = [
+    'field_title' => [
+      'label' => 'Title',
+      'required' => TRUE,
+    ],
+    'field_subtitle' => [
+      'label' => 'Subtitle',
+      'required' => FALSE,
+    ],
+    'field_description' => [
+      'label' => 'Description',
+      'required' => TRUE,
+    ],
+    'field_image' => [
+      'label' => 'Image',
+      'required' => TRUE,
+      'settings' => [
+        'file_directory' => 'wall-of-fame/[date:custom:Y]-[date:custom:m]',
+        'file_extensions' => 'png jpg jpeg',
+        'max_filesize' => '2 MB',
+      ],
+    ],
+    'field_date_of_adding' => [
+      'label' => 'Date Added',
+      'required' => TRUE,
+      'settings' => [
+        'datetime_type' => 'date',
+      ],
+    ],
+  ];
+
+  // Create fields for Wall of Fame paragraph type
+  foreach ($wall_of_fame_fields as $field_name => $field_config) {
+    if (!FieldConfig::loadByName('paragraph', 'wall_of_fame', $field_name)) {
+      FieldConfig::create([
+        'field_name' => $field_name,
+        'entity_type' => 'paragraph',
+        'bundle' => 'wall_of_fame',
+      ] + $field_config)->save();
+    }
+  }
+
+  // Create field for Podium paragraph type
+  if (!FieldConfig::loadByName('paragraph', 'podium', 'field_winner')) {
+    FieldConfig::create([
+      'field_name' => 'field_winner',
+      'entity_type' => 'paragraph',
+      'bundle' => 'podium',
+      'label' => 'Winners',
+      'required' => TRUE,
+      'settings' => [
+        'handler' => 'default:paragraph',
+        'handler_settings' => [
+          'target_bundles' => [
+            'wall_of_fame' => 'wall_of_fame',
+          ],
+        ],
+      ],
+    ])->save();
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function wall_of_fame_uninstall() {
+  // Remove field storages and configurations
+  $fields = [
+    'field_title',
+    'field_subtitle',
+    'field_description',
+    'field_image',
+    'field_date_of_adding',
+    'field_winner',
+  ];
+
+  foreach ($fields as $field) {
+    $field_storage = FieldStorageConfig::loadByName('paragraph', $field);
+    if ($field_storage) {
+      $field_storage->delete();
+    }
+  }
+
+  // Remove paragraph types
+  $paragraph_types = ['podium', 'wall_of_fame'];
+  foreach ($paragraph_types as $type) {
+    $paragraph_type = ParagraphsType::load($type);
+    if ($paragraph_type) {
+      $paragraph_type->delete();
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{#
+/**
+ * @file
+ * Template for Wall of Fame podium container paragraph (wrapper).
+ *
+ * This paragraph contains child paragraphs rendered via field_paragraphs.
+ * The first 3 paragraphs are displayed prominently, with the first one having a different layout.
+ */
+#}
+
+{%
+  set wrapper_classes = [
+    'paragraph',
+    'paragraph--type--' ~ paragraph.bundle|clean_class,
+    'podium',
+    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
+  ]
+%}
+
+<div{{ attributes.addClass(wrapper_classes) }}>
+  {% if content.field_title|render|trim %}
+    <h2 class="wall-of-fame-title">{{ content.field_title }}</h2>
+  {% endif %}
+
+  {% set paragraphs_items = content.field_winner %}
+  {% set paragraphs_count = paragraphs_items|length %}
+
+  <div class="winners-container">
+    {# Display only the first 3 paragraphs with special styling #}
+    {% if paragraphs_count > 0 %}
+      {# Featured paragraph (first position) #}
+      {% set first_item = paragraphs_items[0] %}
+      {% if first_item %}
+        <section class="featured-paragraph-row">
+          {# Inject first-position class into the child paragraph's attributes #}
+          {% set first_item = first_item|merge({'#attributes': {'class': ['first', 'paragraph-featured']}}) %}
+          {{ first_item }}
+        </section>
+      {% endif %}
+
+      {# Second and third paragraphs #}
+      {% if paragraphs_count > 1 %}
+        <section class="standard-paragraphs-grid">
+          {% for i in 1..2 %}
+            {% if paragraphs_items[i] is defined %}
+              {% set position = i + 1 %}
+              {% set position_class = position == 2 ? 'second' : 'third' %}
+              
+              {# Inject position class into the child paragraph's attributes #}
+              {% set current_item = paragraphs_items[i]|merge({'#attributes': {'class': [position_class, 'paragraph-standard']}}) %}
+              {{ current_item }}
+            {% endif %}
+          {% endfor %}
+        </section>
+      {% endif %}
+      
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,85 @@
+@use '../abstracts/variables' as *;
+
+.winners-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: $winner-bg-color;
+}
+
+// Featured winner (first place)
+.featured-paragraph-row {
+  margin-bottom: 3rem;
+  
+  .winner {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 2rem;
+    overflow: hidden;
+    justify-content: space-between;
+    
+    .wall-of-fame-image-container {
+      flex: 0 0 55%;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    
+    .wall-of-fame-content {
+      flex: 0 0 35%;
+      padding: 2rem 0;
+    }
+  }
+}
+
+// Runners up grid (second and third place)
+.standard-paragraphs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  
+  .winner {
+    
+    .wall-of-fame-image-container {
+      width: 100%;
+      aspect-ratio: 16/9;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    
+    .wall-of-fame-content {
+      padding: 1.5rem;
+  position: relative;
+  margin-top: -85px;
+  z-index: 7;
+  background: white;
+  width: 70%;
+  margin-left: auto; /* Pushes it to the right */
+  box-shadow: $winner-shadow;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 992px) {
+  .featured-paragraph-row .winner {
+    flex-direction: column;
+    
+    .wall-of-fame-image-container,
+    .wall-of-fame-content {
+      flex: 0 0 100%;
+    }
+  }
+  
+  .standard-paragraphs-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

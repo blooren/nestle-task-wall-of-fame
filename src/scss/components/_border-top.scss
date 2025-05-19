@@ -1,0 +1,7 @@
+@use '../abstracts/variables' as *;
+
+.border-top {
+  width: 100%;
+  height: 9px;
+  background-color: $purina-red;
+}
