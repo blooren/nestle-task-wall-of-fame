@@ -7,3 +7,20 @@ $winner-transition: transform 0.3s ease;
 $winner-text-padding: 1.5rem;
 $winner-heading-font: Roboto Slab, serif;
 $winner-paragraph-font: Roboto, sans-serif;
+
+// SVG icon paths
+$icon-trophy-path: '../images/trophy.svg';
+$icon-medal-path: '../images/medal.svg';
+$icon-calendar-path: '../images/calendar.svg';
+
+.icon-trophy {
+  @include icon-left($icon-trophy-path);
+}
+
+.icon-medal {
+  @include icon-left($icon-medal-path);
+}
+
+.icon-calendar {
+  @include icon-left($icon-calendar-path);
+}

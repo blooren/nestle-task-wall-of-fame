@@ -3,7 +3,6 @@
  * Fixed to prevent "Maximum call stack size exceeded" issues
  */
 
-'use strict';
 
 // Import required packages
 const gulp = require('gulp');
