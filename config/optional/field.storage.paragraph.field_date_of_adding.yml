@@ -1,0 +1,20 @@
+uuid: a1d46213-bd8f-4128-94c9-bc1da961e59c
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - paragraphs
+id: paragraph.field_date_of_adding
+field_name: field_date_of_adding
+entity_type: paragraph
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

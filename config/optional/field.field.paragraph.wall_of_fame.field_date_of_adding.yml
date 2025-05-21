@@ -1,0 +1,21 @@
+uuid: 96dba607-0e89-42a9-a1c8-e680ab9e2601
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_date_of_adding
+    - paragraphs.paragraphs_type.wall_of_fame
+  module:
+    - datetime
+id: paragraph.wall_of_fame.field_date_of_adding
+field_name: field_date_of_adding
+entity_type: paragraph
+bundle: wall_of_fame
+label: 'Date of adding'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

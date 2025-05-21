@@ -1,0 +1,8 @@
+uuid: a4ec3647-19d2-4dbb-a676-e73f876e8493
+langcode: en
+status: true
+dependencies: {  }
+id: wall_of_fame
+label: 'Wall of Fame'
+revision: false
+description: 'A wall of fame to highlight winners'

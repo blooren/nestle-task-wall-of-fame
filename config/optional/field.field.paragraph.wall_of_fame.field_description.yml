@@ -1,0 +1,22 @@
+uuid: e731b7ba-5f85-40d8-8b5f-b1864de7ffba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_description
+    - paragraphs.paragraphs_type.wall_of_fame
+  module:
+    - text
+id: paragraph.wall_of_fame.field_description
+field_name: field_description
+entity_type: paragraph
+bundle: wall_of_fame
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

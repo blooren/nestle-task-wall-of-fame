@@ -1,0 +1,29 @@
+uuid: 03a63721-cbb9-442f-b749-fffc30696bf6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_image
+    - media.type.image
+    - paragraphs.paragraphs_type.wall_of_fame
+id: paragraph.wall_of_fame.field_image
+field_name: field_image
+entity_type: paragraph
+bundle: wall_of_fame
+label: Image
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

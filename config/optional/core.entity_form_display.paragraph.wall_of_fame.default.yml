@@ -1,0 +1,62 @@
+uuid: 33770061-bd2f-4701-8a9f-5e0ca4067fc9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.wall_of_fame.field_date_of_adding
+    - field.field.paragraph.wall_of_fame.field_description
+    - field.field.paragraph.wall_of_fame.field_image
+    - field.field.paragraph.wall_of_fame.field_subtitle
+    - field.field.paragraph.wall_of_fame.field_title
+    - paragraphs.paragraphs_type.wall_of_fame
+  module:
+    - datetime
+    - text
+id: paragraph.wall_of_fame.default
+targetEntityType: paragraph
+bundle: wall_of_fame
+mode: default
+content:
+  field_date_of_adding:
+    type: datetime_default
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_description:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_image:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_subtitle:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

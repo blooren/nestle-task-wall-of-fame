@@ -1,0 +1,15 @@
+uuid: d480162f-5e6b-4157-9fa2-267f31eb8b94
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_ee
+third_party_settings:
+  paragraphs_ee:
+    paragraphs_categories: {  }
+id: podium
+label: Podium
+icon_uuid: null
+icon_default: null
+description: 'Wall of fame wrapper'
+behavior_plugins: {  }

@@ -1,0 +1,55 @@
+uuid: 1264bfbd-3bda-444b-bc73-5455c6818ba7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_winner
+    - paragraphs.paragraphs_type.podium
+    - paragraphs.paragraphs_type.wall_of_fame
+  module:
+    - entity_reference_revisions
+id: paragraph.podium.field_winner
+field_name: field_winner
+entity_type: paragraph
+bundle: podium
+label: winner
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      wall_of_fame: wall_of_fame
+    negate: 0
+    target_bundles_drag_drop:
+      from_library:
+        weight: 10
+        enabled: false
+      image_text:
+        weight: 12
+        enabled: false
+      images:
+        weight: 11
+        enabled: false
+      nested_paragraph:
+        weight: 13
+        enabled: false
+      podium:
+        weight: 14
+        enabled: false
+      text:
+        weight: 15
+        enabled: false
+      text_image:
+        weight: 16
+        enabled: false
+      user:
+        weight: 17
+        enabled: false
+      wall_of_fame:
+        weight: 18
+        enabled: true
+field_type: entity_reference_revisions

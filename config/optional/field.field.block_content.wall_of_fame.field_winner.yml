@@ -1,0 +1,29 @@
+uuid: 2c62158f-641d-40f5-814f-f78f6e3a29eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.wall_of_fame
+    - field.storage.block_content.field_winner
+  module:
+    - entity_reference_revisions
+id: block_content.wall_of_fame.field_winner
+field_name: field_winner
+entity_type: block_content
+bundle: wall_of_fame
+label: Winner
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: {  }
+    negate: 0
+    target_bundles_drag_drop:
+      winner:
+        weight: 2
+        enabled: true
+field_type: entity_reference_revisions

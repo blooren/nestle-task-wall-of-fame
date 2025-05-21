@@ -1,0 +1,35 @@
+uuid: bb44e78f-d4e4-4b83-b736-b634dcd4574a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.podium.field_winner
+    - paragraphs.paragraphs_type.podium
+  module:
+    - paragraphs
+id: paragraph.podium.default
+targetEntityType: paragraph
+bundle: podium
+mode: default
+content:
+  field_winner:
+    type: paragraphs
+    weight: 0
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
