@@ -43,6 +43,7 @@ A custom Drupal module that provides a reusable "Wall of Fame" feature using Par
 
 1. **Place the module:**
 
+   rename the  `nestle-task-wall-of-fame` folder to `wall_of_fame/`
    Copy the `wall_of_fame/` folder into your custom modules directory:
    
 2. **Enable the module:**

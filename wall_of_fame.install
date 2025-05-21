@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Wall of Fame module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function wall_of_fame_install() {
+  // Create default content if needed
+  // This could create a sample podium with entries, for example
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function wall_of_fame_uninstall() {
+  // Clean up any content or state data that shouldn't remain after uninstall
+  // Configuration cleanup is handled automatically by Drupal
+}
